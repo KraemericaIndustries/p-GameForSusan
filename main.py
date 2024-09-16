@@ -21,7 +21,7 @@ while len(guessed_states) < 50:
     # Pretty-print available choices to console
     print("\n" * 100)
     print("Available choices:")
-    for _ in range(0, len(states) - 1):
+    for _ in range(0, len(states)):
         print(f"{states[_]}, ", end='')
         if _/10 == 1: print("")
         elif _/ 10 == 2: print("")
