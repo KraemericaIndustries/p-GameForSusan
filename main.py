@@ -45,7 +45,7 @@ while len(guessed_states) < 50:
 
     if answer_state == row_data.state.item():
         guessed_states.append(answer_state)
-        turtle.clear()
+        t.clear()
         t.write(f"{answer_state}", align='left', font=('Arial', 12, 'normal'))
         print("Correct!")
     else:
