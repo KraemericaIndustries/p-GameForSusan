@@ -12,29 +12,46 @@ data = pandas.read_csv("50_states.csv")
 states = data.state.to_list()
 guessed_states = []
 
-# Select a state, at random, to be guessed
-random_location = random.choice(states)
-print(random_location)
 
-# Save data frame data for random_location to a variable
-row_data = data[data.state == random_location]
-print(row_data)
 
-# Extract coordinates from row_data for turtle as ints
-x = row_data.x.item()
-y = row_data.y.item()
 
-t = turtle.Turtle()
-t.shape("arrow")
-t.setheading(270)
-# t.color("red")
-t.penup()
-t.goto(x, y)
-t.write("What state is this?", align='left', font=('Arial', 12, 'normal'))
-answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="Enter this state's name:").title()
 
-if answer_state == row_data.state.item():
-    print("Correct!")
+
+while len(guessed_states) < 50:
+
+    # Select a state, at random, to be guessed
+    random_location = random.choice(states)
+    print(random_location)
+
+    # Save data frame data for random_location to a variable
+    row_data = data[data.state == random_location]
+    print(row_data)
+
+    # Extract coordinates from row_data for turtle as ints
+    x = row_data.x.item()
+    y = row_data.y.item()
+
+    t = turtle.Turtle()
+    t.shape("arrow")
+    t.setheading(270)
+    # t.color("red")
+    t.penup()
+    t.goto(x, y)
+    t.write("What state is this?", align='left', font=('Arial', 12, 'normal'))
+    answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct",
+                                    prompt="Enter this state's name:").title()
+
+
+
+    if answer_state == row_data.state.item():
+        guessed_states.append(answer_state)
+        turtle.clear()
+        t.write(f"{answer_state}", align='left', font=('Arial', 12, 'normal'))
+        print("Correct!")
+    else:
+        print(f"Sorry, that's not correct.  The correct answer is {row_data.state.item()}")
+        break
+print(f"Here are the states you got correct: {guessed_states}")
 
 # while len(guessed_states) < 50:
 #     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="What's another state's name?").title()
@@ -55,3 +72,4 @@ if answer_state == row_data.state.item():
 #         state_data = data[data.state == answer_state]
 #         t.goto(state_data.x.item(), state_data.y.item())
 #         t.write(answer_state)
+screen.exitonclick()
