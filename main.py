@@ -12,25 +12,21 @@ data = pandas.read_csv("50_states.csv")
 states = data.state.to_list()
 guessed_states = []
 
-
-
-
-
-
 while len(guessed_states) < 50:
 
     # Select a state, at random, to be guessed
     random_location = random.choice(states)
-    print(random_location)
+    # print(random_location)
 
     # Save data frame data for random_location to a variable
     row_data = data[data.state == random_location]
-    print(row_data)
+    # print(row_data)
 
     # Extract coordinates from row_data for turtle as ints
     x = row_data.x.item()
     y = row_data.y.item()
 
+    # Create a turtle that roams the US
     t = turtle.Turtle()
     t.shape("arrow")
     t.setheading(270)
@@ -38,11 +34,9 @@ while len(guessed_states) < 50:
     t.penup()
     t.goto(x, y)
     t.write("What state is this?", align='left', font=('Arial', 12, 'normal'))
-    answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct",
-                                    prompt="Enter this state's name:").title()
+    answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="Enter this state's name:").title()
 
-
-
+    # Evaluate if the guess is correct
     if answer_state == row_data.state.item():
         guessed_states.append(answer_state)
         t.clear()
@@ -53,23 +47,4 @@ while len(guessed_states) < 50:
         break
 print(f"Here are the states you got correct: {guessed_states}")
 
-# while len(guessed_states) < 50:
-#     answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="What's another state's name?").title()
-#
-#     if answer_state == "Exit":
-#         missing_states = []
-#         for state in states:
-#             missing_states.append(state)
-#         new_data = pandas.DataFrame(missing_states)
-#         new_data.to_csv("states_to_learn.csv")
-#         break
-#
-#     if answer_state in states:
-#         guessed_states.append(answer_state)
-#         t = turtle.Turtle()
-#         t.hideturtle()
-#         t.penup()
-#         state_data = data[data.state == answer_state]
-#         t.goto(state_data.x.item(), state_data.y.item())
-#         t.write(answer_state)
 screen.exitonclick()
