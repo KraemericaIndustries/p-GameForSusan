@@ -40,12 +40,6 @@ for key in high_score_dict:
     hi.goto(-200, 250)
     hi.write(f"All time leader: {key}  Score: {high_score_dict[key]} (wrong)", align='left', font=('Arial', 16, 'normal'))
 
-
-
-
-
-
-
 # Game loop
 while len(guessed_states) < 50:
 
@@ -107,11 +101,8 @@ print(f"You made {incorrect_guesses} incorrect guesses.")
 print(f"End_Leader: {leader}")
 print(f"End_score: {score}")
 
-
-
-
-
-
-
+if incorrect_guesses < score:
+    with open("high_score.csv", mode="w") as file:
+        file.write(f"player,score\n{player},{incorrect_guesses}")
 
 screen.exitonclick()
