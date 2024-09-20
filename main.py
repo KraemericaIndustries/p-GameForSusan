@@ -37,7 +37,7 @@ for key in high_score_dict:
     hi.shapesize(0.5, 0.5)
     # t.color("red")
     hi.penup()
-    hi.goto(-200, 250)
+    hi.goto(-200, 430)
     hi.write(f"All time leader: {key}  Score: {high_score_dict[key]} (wrong)", align='left', font=('Arial', 16, 'normal'))
 
 # Game loop
