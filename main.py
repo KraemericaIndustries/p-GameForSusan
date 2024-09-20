@@ -6,7 +6,7 @@ import time
 # Set up the screen
 screen = turtle.Screen()
 screen.title("U.S. States Game")
-image = "blank_states_img.gif"
+image = "blank_states_img_bigger.gif"
 screen.addshape(image)
 turtle.shape(image)
 
