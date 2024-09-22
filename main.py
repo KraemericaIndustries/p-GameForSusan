@@ -69,6 +69,7 @@ while len(guessed_states) < 50:
     # Create a turtle that roams the US
     t = turtle.Turtle()
     t.shape("arrow")
+    t.color("purple")
     t.setheading(270)
     t.shapesize(0.5, 0.5)
     # t.color("red")
