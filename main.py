@@ -5,17 +5,26 @@ import time
 
 # Set up the screen
 screen = turtle.Screen()
-screen.title("U.S. States Game")
+screen.title("U.S. Geography Game")
 image = "blank_states_img_bigger.gif"
 screen.addshape(image)
 turtle.shape(image)
 # screen.screensize(1000, 1000)
 screen.setup(1400, 1000)
 
+# SELECT the version of the game to be played
+version = input("Select the version of the game you wish to play.  Type 'states' or capitals': ")
+
 # Read in data on states from file
-data = pandas.read_csv("50_states.csv")
+
+if version == "states":
+    data = pandas.read_csv("50_states.csv")
+    entity = "state "
+elif version == "capitals":
+    data = pandas.read_csv("50_state_capitals.csv")
+    entity = "state capital "
+
 states = data.state.to_list()
-# random.shuffle(states)
 
 # Declare some variables
 guessed_states = []
@@ -92,10 +101,10 @@ while len(guessed_states) < 50:
     # t.color("red")
     t.penup()
     t.goto(x, y)
-    t.write("What state is this?", align='left', font=('Arial', 8, 'normal'))
+    t.write("What is this?", align='left', font=('Arial', 8, 'normal'))
 
     # https://stackoverflow.com/questions/77208847/how-can-i-customize-the-placement-or-position-of-the-text-input-window-in-the-tu <- Tried, seems to be missing a click event
-    answer_state = screen.textinput(title=f"{len(guessed_states)}/50 States Correct", prompt="Enter this state's name:").title()
+    answer_state = screen.textinput(title=f"{len(guessed_states)}/50 Correct", prompt="Which one is this?:").title()
 
     # Evaluate if the guess is correct
     if answer_state == row_data.state.item():
