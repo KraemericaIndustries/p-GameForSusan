@@ -9,10 +9,13 @@ screen.title("U.S. States Game")
 image = "blank_states_img_bigger.gif"
 screen.addshape(image)
 turtle.shape(image)
+# screen.screensize(1000, 1000)
+screen.setup(1400, 1000)
 
 # Read in data on states from file
 data = pandas.read_csv("50_states.csv")
 states = data.state.to_list()
+# random.shuffle(states)
 
 # Declare some variables
 guessed_states = []
@@ -50,10 +53,24 @@ while len(guessed_states) < 50:
     print("Available choices:")
     for _ in range(0, len(states)):
         print(f"{states[_]}, ", end='')
-        if _/10 == 1: print("")
-        elif _/ 10 == 2: print("")
-        elif _ / 10 == 3: print("")
-        elif _ / 10 == 4: print("")
+        if _/3 == 1: print("")
+        elif _/ 3 == 2: print("")
+        elif _ / 3 == 3: print("")
+        elif _ / 3 == 4: print("")
+        elif _ / 3 == 5: print("")
+        elif _ / 3 == 6: print("")
+        elif _ / 3 == 7: print("")
+        elif _ / 3 == 8: print("")
+        elif _ / 3 == 9: print("")
+        elif _ / 3 == 10: print("")
+        elif _ / 3 == 11: print("")
+        elif _ / 3 == 12: print("")
+        elif _ / 3 == 13: print("")
+        elif _ / 3 == 14: print("")
+        elif _ / 3 == 15: print("")
+        elif _ / 3 == 16: print("")
+        elif _ / 3 == 17: print("")
+
 
     # Select a state, at random, to be guessed
     random_location = random.choice(states)
